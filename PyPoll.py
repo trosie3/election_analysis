@@ -42,8 +42,15 @@ with open(file_to_load) as election_data:
         # add to vote
         candidate_votes[candidate_name] += 1
 
-#print candidate list     
-print(candidate_votes)
+        #go thru t find vote percentage
+    for candidate_name in candidate_votes:
+            #get votes per candidate
+        votes = candidate_votes[candidate_name]
+            # percentage of total vote
+        vote_percentage = (votes/total_votes)*100
+            #print candidates percentage   
+        print(f"{candidate_name}: received {float(vote_percentage):.1f}% of the vote")
+
 
 
 # Using the with statement open the file as a text file.
@@ -55,12 +62,13 @@ with open(file_to_save, "w") as txt_file:
     txt_file.write("Arapahoe\nDenver\nJefferson")
 
 # 1.Total number of votes cast
-# maybe for later? ---    txt_file.write("Total number of votes str(total_votes)\n")
+# maybe for later? ---  txt_file.write(f"Total number of votes str(total_votes)\n")
 # 2.A complete list of candidates who received votes
-# maybe for later? ---    txt_file.write("The candidates [candidate_options]\n")
+# maybe for later? ---  txt_file.write(f"The candidates are {candidate_options}\n")
 # 3.Total number of votes each candidate received
-# maybe for later? ---    txt_file.write("The total votes per candidate: [candidate_votes]\n")
+# maybe for later? ---  txt_file.write(f"The total votes per are: {candidate_name}:{candidate_votes}\n")
 # 4.Percentage of votes each candidate won
+# maybe for later? ---  txt_file.write(f"{candidate_name}: recieved {float(vote_percentage):.1f} of the total vote\n")
 # 5.The winner of the election based on popular vote
 # The data we need to retrieve
 #add dependencies
