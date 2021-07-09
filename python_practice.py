@@ -112,3 +112,22 @@ for key, value in counties_dict.items():
 voting_data = [``{"county":"Arapahoe", "registered_voters": 422829}, {"county":"Denver", "registered_voters": 463353}, {"county":"Jefferson", "registered_voters": 432438}]
 for county, registered_voters in counties_dict.items():
     print(f"{county} county has {registered_voters} registered voters")
+
+# how we would use the datetime module to get todays date
+# Import the datetime class from the datetime module.
+import datetime
+# Use the now() attribute on the datetime class to get the present time.
+now = datetime.datetime.now()
+# Print the present time.
+print("The time right now is ", now)
+#refactor to reduce confusion 
+# Import the datetime class from the datetime module.
+import datetime as dt
+# Use the now() attribute on the datetime class to get the present time.
+now = dt.datetime.now()
+# Print the present time.
+print("The time right now is ", now)
+
+import random
+import numpy
+

@@ -1,4 +1,6 @@
-# The data wwe need to retrieve
+# The data we need to retrieve
+path = Resources/election_results.csv
+
 # 1.Total number of votes cast
 # 2.A complete list of candidates who received votes
 # 3.Total number of votes each candidate received
