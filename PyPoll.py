@@ -16,6 +16,11 @@ candidate_options = []
 #votes per candidate
 candidate_votes = {}
 
+#winning candaite and winning count tracker
+winning_candidate = ""
+winning_count = 0
+winning_percentage = 0
+
 # open election results and read
 with open(file_to_load) as election_data:
 
@@ -42,15 +47,31 @@ with open(file_to_load) as election_data:
         # add to vote
         candidate_votes[candidate_name] += 1
 
-        #go thru t find vote percentage
+    #go thru to find vote percentage
     for candidate_name in candidate_votes:
-            #get votes per candidate
+        #get votes per candidate
         votes = candidate_votes[candidate_name]
-            # percentage of total vote
-        vote_percentage = (votes/total_votes)*100
-            #print candidates percentage   
-        print(f"{candidate_name}: received {float(vote_percentage):.1f}% of the vote")
+        # percentage of total vote
+        vote_percentage = float(votes)/float(total_votes)*100
+            
+        #to do print each cand name, vote, and perct of #of votes
+        print(f'{candidate_name}: {vote_percentage:.1f}% ({votes:,})\n')
+        #deterimine winning vote count & candidate          
+        if (votes > winning_count) and (vote_percentage > winning_percentage):
+            #if true then set winning count equal to votes, winning perc equal to vote perc
+            winning_count = votes
+            winning_percentage = vote_percentage
+            #set winning cand equal to cand name
+            winning_count = candidate_name
 
+    #to do print winning cand, vote count & perct       
+    winning_candidate_summary = (
+        f"-------------------------\n"
+        f"Winner: {winning_candidate}\n"
+        f"Winning Vote Count: {winning_count:,}\n"
+        f"Winning Percentage: {winning_percentage:.1f}%\n"
+        f"-------------------------\n")
+    print(winning_candidate_summary)
 
 
 # Using the with statement open the file as a text file.
@@ -70,5 +91,4 @@ with open(file_to_save, "w") as txt_file:
 # 4.Percentage of votes each candidate won
 # maybe for later? ---  txt_file.write(f"{candidate_name}: recieved {float(vote_percentage):.1f} of the total vote\n")
 # 5.The winner of the election based on popular vote
-# The data we need to retrieve
-#add dependencies
+
