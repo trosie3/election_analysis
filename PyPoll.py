@@ -13,6 +13,9 @@ total_votes = 0
 # find the candidate names
 candidate_options = []
 
+#votes per candidate
+candidate_votes = {}
+
 # open election results and read
 with open(file_to_load) as election_data:
 
@@ -32,10 +35,15 @@ with open(file_to_load) as election_data:
         candidate_name = row[2]
         # to get unique names only
         if candidate_name not in candidate_options:
-        # add cand name to list
+            # add cand name to list
             candidate_options.append(candidate_name)
+            # Begin tracking that candidate's vote count.
+            candidate_votes[candidate_name] = 0
+        # add to vote
+        candidate_votes[candidate_name] += 1
+
 #print candidate list     
-print(candidate_options)
+print(candidate_votes)
 
 
 # Using the with statement open the file as a text file.
@@ -51,6 +59,7 @@ with open(file_to_save, "w") as txt_file:
 # 2.A complete list of candidates who received votes
 # maybe for later? ---    txt_file.write("The candidates [candidate_options]\n")
 # 3.Total number of votes each candidate received
+# maybe for later? ---    txt_file.write("The total votes per candidate: [candidate_votes]\n")
 # 4.Percentage of votes each candidate won
 # 5.The winner of the election based on popular vote
 # The data we need to retrieve
